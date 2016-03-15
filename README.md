@@ -2,7 +2,7 @@
 For those times when you just need to create a chart in Office from Matlab. It goes without saying that this will only work on Win32/Win64 systems.
 The COM automation server is mostly a wrapper for the VBA settings in Office.
 Many thanks to [Mathworks Support].(http://www.mathworks.com/matlabcentral/answers/99150-is-there-an-example-of-using-matlab-to-create-powerpoint-slides) and to [MSDN](https://msdn.microsoft.com/en-us/library/office/).
-
+## Powerpoint
 ### Initiating a Powerpobject.
 ```
    h = actxserver('PowerPoint.Application')
@@ -56,10 +56,48 @@ Most AddObject Functions take a series of (left edge, top edge, width, height)
 ```
 
 
-## Saving the Presentation 
+### Saving the Presentation 
 ```
 Presentation.SaveAs('C:\...\ExamplePresentation.ppt')
 h.quit
 h.delete
 ```
 Deleting the server object is important as this will prevent memory issues the next time you use this. 
+
+
+## Excel 
+For Excel, rather than presentations, you would call them workbooks
+
+### Initiating a Workbook
+```
+   h = actxserver('Excel.Application')
+   h.Visible = 1;
+```
+
+### Poking Around
+...
+>> h.Workbooks.invoke
+	Add = handle Add(handle, Variant(Optional))
+	Close = void Close(handle)
+	Item = handle Item(handle, Variant)
+	Open = handle Open(handle, string, Variant(Optional))
+	OpenText = void OpenText(handle, string, Variant(Optional))
+	OpenDatabase = handle OpenDatabase(handle, string, Variant(Optional))
+	CheckOut = void CheckOut(handle, string)
+	CanCheckOut = bool CanCheckOut(handle, string)
+	OpenXML = handle OpenXML(handle, string, Variant(Optional))
+...
+
+
+Create a new workbook
+```
+>> work=h.Workbooks.Add
+ 
+work =
+ 
+	Interface.Microsoft_Excel_14.0_Object_Library._Workbook
+  
+```
+
+### Navigating and doing things in workbooks
+
