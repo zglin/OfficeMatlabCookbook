@@ -101,3 +101,23 @@ work =
 
 ### Navigating and doing things in workbooks
 
+You should  setup a range variable in order to get Matlab to be able to work with individual cells in matlab. 
+...
+>> Cursor=activesheet.Range('A1');
+ 
+Cursor =
+ 
+	Interface.Microsoft_Excel_14.0_Object_Library.Range
+>> Cursor.Formula=1
+ 
+Cursor =
+ 
+	Interface.Microsoft_Excel_14.0_Object_Library.Range
+
+
+...
+### Running VBA through Workbooks
+Macros are run at the excel application level (so whatever variable that is assigned to Excel.Application activex server
+...
+h.Run('Macroname') 
+...
