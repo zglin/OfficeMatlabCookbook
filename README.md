@@ -54,6 +54,16 @@ Most AddObject Functions take a series of (left edge, top edge, width, height)
 >>text=Slide1.Shapes.AddTextbox('msoTextOrientationHOrizontal',300,100, 400,400)
 >>text.TextFrame.TextRange.Text='Testing text'
 ```
+#### Inserting VBA Charts
+While most times you will be ok with a picture of the chart, sometimes there needs to be a dynamic chart
+
+```
+>>>chart1=Slide1.Shapes.AddChart(Type, Left, Top, Width, Height)
+chart1 =
+	Interface.Microsoft_PowerPoint_14.0_Object_Library.Shape
+
+```
+
 
 
 ### Saving the Presentation 
