@@ -61,9 +61,9 @@ While most times you will be ok with a picture of the chart, sometimes there nee
 >>>chart1=Slide1.Shapes.AddChart(Type, Left, Top, Width, Height)
 chart1 =
 	Interface.Microsoft_PowerPoint_14.0_Object_Library.Shape
-
 ```
 
+This is the default chart, invoke .Chart.ChartData in order to modify existing chart data
 
 
 ### Saving the Presentation 
