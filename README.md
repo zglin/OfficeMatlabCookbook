@@ -27,6 +27,13 @@ Unless files need to be opened, most of the time, you will be working with the P
 deck=h.Presentations.Add
   
 ```
+If you need to open a file, keep in mind that the open method will open by default in the My-documents folder and if you get a InvokeError stating that PowerPoint could not open the file, you probably forgot to specify the path.
+```
+filename_path=strcat(pwd,'\',filename)
+h.Presentations.Open(filename_path)
+```
+
+
 ### Adding Slides
 In Office 2003 the com automation server predefined layout templates
 ```
@@ -46,6 +53,9 @@ Title Slide
 
 ```
 If this works, you should see a new slide pop in your powerpoint window.
+
+Most of the time you will want to add a slide after the current slide which necessitates the use of deck.Slides.Count
+
 ### Working with Slides
 There are two schools of thought around Powerpoint, you can manually build each individual slide and position them, or you can apply formatting to individual templates.
 #### Absolute Positioning
@@ -64,6 +74,18 @@ chart1 =
 ```
 
 This is the default chart, invoke .Chart.ChartData in order to modify existing chart data
+
+##### Changing Chart Titles
+Formatting is a bit painful with the VBA object model as there are multiple levels of abstraction. 
+To change the title of a slide for example
+```
+chart1.Chart.ChartTitle.Text= 'sometext'
+```
+To change the format of the text in the chart itself (for example the axes), is just as involved.
+```
+chart1.Chart.ChartArea.Format.TextFrame2.TextRange.Font.Size=size
+```
+
 
 
 ### Saving the Presentation 
